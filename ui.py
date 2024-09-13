@@ -1,13 +1,13 @@
 from datetime import datetime
 import json
-from clientes import Cliente, Clientes_CRUD
-from horarios import Horario, Horarios_CRUD
-from servicos import Servico, Servico_CRUD
+from pacientes import Paciente, Paciente_CRUD
+from consulta import Consulta, Consultas_CRUD
+from medico import Medico, Medico_CRUD
 
 class UI:
     @staticmethod
     def menu_main():
-        print("1 - Clientes\n2 - Horários\n3 - serviços\n4 - Sair")
+        print("1 - Pacientes\n2 - Consultas\n3 - Médicos\n4 - Sair")
         op = int(input("digite uma opção: "))
         if op > 0 and op <= 4:
             return op
@@ -16,7 +16,7 @@ class UI:
     def main():
         op = UI.menu_main()
         if op == 1:
-            UI_clientes.main_clientes()
+            UI_pacientes.main_pacientes()
         if op == 2:
             UI_horarios.main_horarios()
         if op == 3:
@@ -24,74 +24,74 @@ class UI:
         if op == 4:
             print("fim")
 
-class UI_clientes:
+class UI_pacientes:
     @staticmethod
-    def menu_clientes():
-        print("1 - inserir cliente\n2 - listar clientes\n3 - listar por id\n4 - atualizar dados\n5 - excluir cliente\n6 - sair")
+    def menu_pacientes():
+        print("1 - inserir paciente\n2 - listar pacientes\n3 - listar pacientes por id\n4 - atualizar dados\n5 - excluir paciente\n6 - sair")
         op = int(input("digite um comando: "))
         if op > 0 and op <= 6:
             return op
 
     @staticmethod
-    def main_clientes():
-        op = UI_clientes.menu_clientes()
+    def main_pacientes():
+        op = UI_pacientes.menu_clientes()
         if op == 1:
-            UI_clientes.inserir()
+            UI_pacientes.inserir()
         if op == 2:
-            UI_clientes.listar()
+            UI_pacientes.listar()
         if op == 3:
-            UI_clientes.listar_id()
+            UI_pacientes.listar_id()
         if op == 4:
-            UI_clientes.atualizar()
+            UI_pacientes.atualizar()
         if op == 5:
-            UI_clientes.excluir()
+            UI_pacientes.excluir()
         if op == 6:
             UI.main()
 
     @staticmethod
     def inserir():
         nome = input("digite o nome do usuário: ")
-        email = input("digite o email do usuário: ")
         fone = input("digite o telefone do usuário: ")
+        cpf = input("digite o cpf do cliente: ")
+        str_idade = input("digite a idade do paciente: ")
+        idade = datetime.strptime(str_idade, "%d/%m/%Y %H:%M")
 
-        obj = Cliente(0, nome, email, fone)
-
+        obj = Cliente(0, nome, idade, fone, cpf)
         Clientes_CRUD.inserir(obj)
 
-        UI_clientes.main_clientes()
+        UI_pacientes.main_pacientes()
 
     @staticmethod
     def listar():
-        Clientes_CRUD.listar()
-        UI_clientes.main_clientes()
+        Pacientes_CRUD.listar()
+        UI_pacientes.main_pacientes()
 
 
     @staticmethod
     def listar_id():
-        id_cliente = int(input("digite seu id: "))
-        Clientes_CRUD.listar_id_cliente(id_cliente)
-        UI_clientes.main_clientes()
+        id_paciente = int(input("digite o id do paciente: "))
+        Pacientes_CRUD.listar_id_paciente(id_paciente)
+        UI_pacientes.main_pacientes()
 
 
     @staticmethod
     def atualizar():
-        id = int(input("digite o id do usuário que terá seus dados modificados: "))
-        nome = input("digite o novo nome do usuário: ")
-        email = input("digite o novo email do usuário: ")
-        fone = input("digite o novo telefone do usuário: ")
-
-        c = Cliente(id, nome, email, fone)
-
-        Clientes_CRUD.atualizar(c)
-        UI_clientes.main_clientes()
+        id = int(input("digite o id do paciente que terá seus dados modificados: "))
+        nome = input("digite o novo nome do paciente: ")
+        fone = input("digite o novo telefone do paciente: ")
+        str_idade = input("digite a idade do paciente: ")
+        idade = datetime.strptime(str_idade, "%d/%m/%Y %H:%M")
+        obj = Cliente(id, nome, idade, fone, cpf)
+        Pacientes_CRUD.atualizar(c)
+        UI_pacientes.main_pacientes()
 
     @staticmethod
     def excluir():
         id = int(input("digite o id do usuário que desejas excluir: "))
         Clientes_CRUD.excluir(id)
-        UI_clientes.main_clientes()
+        UI_pacientes.main_pacientes()
 
-class UI_servicos:
+class UI_servicos:          #DAQUI PARA BAIXO TEM QUE ARRUMAR
     @staticmethod
     def menu_servicos():
         print("1 - inserir serviço\n2 - listar serviços\n3 - listar por id\n4 - atualizar dados\n5 - excluir serviço\n6 - sair")

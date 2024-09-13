@@ -1,6 +1,6 @@
 from datetime import datetime
 import json
-from paciente import Paciente_CRUD, Paciente
+from paciente import Pacientes_CRUD, Paciente
 from medico import Medico_CRUD, Medico
 
 class Consulta:
@@ -104,9 +104,13 @@ class Consultas_CRUD:
             raise ValueError("preencha os campos corretamente")
         # verificar se o id do paciente e especificacao é realmente válido na class UI
         consultas = []
-        for x in cls.objetos_consulta:
-            if x.id_paciente == id_paciente and x.especificacao == especificacao:
-                consultas.append(x)
+        for x in Pacientes_CRUD.objetos_pacientes:
+            if x.id_paciente == id_paciente:
+                for y in Medico_CRUD.objetos_medicos:
+                    if y.especificacao == especificacao: # parece que funciona, mas n tenho certeza... não testei
+                        for x in cls.objetos_consulta:
+                            if x.id_paciente == id_paciente and x.especificacao == especificacao:
+                                consultas.append(x)
         for y in consultas:
             print(y) #trasnferir print() para o view
 
