@@ -1,7 +1,7 @@
 # id_servico:int, descrição:str, valor:float, duração:int
 import json
 
-class Médico:
+class Medico:
     def __init__(self, id_medico, nome, especificacao):
         self.set_id_medico(id_medico)
         self.set_nome(nome)
@@ -45,7 +45,7 @@ class Medico_CRUD:
             with open("medicos.json", mode="r") as arquivo:   # r - read
                 texto = json.load(arquivo)
                 for obj in texto:   
-                    m = Médico(obj["id_medico"], obj["nome"], obj["especificacao"])
+                    m = Medico(obj["id_medico"], obj["nome"], obj["especificacao"])
                     cls.objetos_medicos.append(m)
         except FileNotFoundError:
             pass
@@ -56,7 +56,7 @@ class Medico_CRUD:
             json.dump(cls.objetos_medicos, arquivo, default = vars)
 
     @classmethod
-    def inserir(cls, obj:Médico):#eu vou receber todos os atributos com exceção do id_servico. Então eu crio um
+    def inserir(cls, obj:Medico):#eu vou receber todos os atributos com exceção do id_servico. Então eu crio um
         cls.abrir()#eu poderia criar um random.radint para criar um id_servico pouco provável  de se repetir, mas n
         x=0
         for y in cls.objetos_medicos:
@@ -86,7 +86,7 @@ class Medico_CRUD:
 
 
     @classmethod
-    def atualizar(cls, m:Médico):#nesse objeto o cliente me fornecerá o id_medico de usuário e os demais atributos serão para a troca
+    def atualizar(cls, m:Medico):#nesse objeto o cliente me fornecerá o id_medico de usuário e os demais atributos serão para a troca
         cls.abrir()
         for x in cls.objetos_medicos:
             if m.id_medico == x.id_medico:
