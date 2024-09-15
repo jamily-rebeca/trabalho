@@ -1,6 +1,6 @@
 from datetime import datetime
 import json
-from paciente import Pacientes_CRUD, Paciente
+from pacientes import Pacientes_CRUD, Paciente
 from medico import Medico_CRUD, Medico
 
 class Consulta:
@@ -92,10 +92,11 @@ class Consultas_CRUD:
     def listar(cls, id_paciente):
         # na UI vou verificar se o id_paciente é válido e realmente existe na class Cliente
         consultas = []
+        cls.abrir()
         for x in cls.objetos_consulta:
             if x.id_paciente == id_paciente:
                 consultas.append(x)
-        for x in consulta:
+        for x in consultas:
             print(x) #eu sei que isso não pode, mas depois transfiro para o view.. agora vou fazer funcionar
 
     @classmethod
@@ -108,11 +109,11 @@ class Consultas_CRUD:
             if x.id_paciente == id_paciente:
                 for y in Medico_CRUD.objetos_medicos:
                     if y.especificacao == especificacao: # parece que funciona, mas n tenho certeza... não testei
-                        for x in cls.objetos_consulta:
-                            if x.id_paciente == id_paciente and x.especificacao == especificacao:
-                                consultas.append(x)
-        for y in consultas:
-            print(y) #trasnferir print() para o view
+                        for z in cls.objetos_consulta:
+                            if z.id_paciente == id_paciente and z.especificacao == especificacao:
+                                consultas.append(z)
+        for w in consultas:
+            print(w) #trasnferir print() para o view
 
     @classmethod
     def atualizar(cls, consulta:Consulta):

@@ -42,16 +42,12 @@ class Paciente:
     def get_cpf(self):
         return self.cpf    
 
-    def set_idade(self, idade:datetime):
-        today = datetime.now()
-        if idade > today:
-            raise ValueError("informe uma data válida")
-        if idade <= today:
+    def set_idade(self, idade:int):
+        if idade >= 0:
             self.idade = idade
 
     def get_idade(self):
-        strData = datetime.strftime(self.idade, "%d/%m/%Y")
-        return strData
+        return self.idade
 
 
     def __str__(self):
@@ -72,17 +68,11 @@ class Pacientes_CRUD:
         except FileNotFoundError:
             pass
 
-    
-    @staticmethod
-    def modo(obj):
-        if isinstance(obj, datetime):
-            return datetime.strftime(obj, "%d/%m/%Y")
-        return vars(obj)
 
     @classmethod
     def salvar(cls):
         with open("pacientes.json", mode="w") as arquivo:
-            json.dump(cls.objetos_pacientes, arquivo, default = Pacientes_CRUD.modo)
+            json.dump(cls.objetos_pacientes, arquivo, default = vars)
 
 
     @classmethod

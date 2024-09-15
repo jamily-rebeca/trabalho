@@ -40,7 +40,7 @@ class Medico_CRUD:
     objetos_medicos = []
     @classmethod
     def abrir(cls):
-        cls.objetos_medicos:list[Médico] = []
+        cls.objetos_medicos:list[Medico] = []
         try:
             with open("medicos.json", mode="r") as arquivo:   # r - read
                 texto = json.load(arquivo)
