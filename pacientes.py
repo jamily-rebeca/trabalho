@@ -89,8 +89,7 @@ class Pacientes_CRUD:
     @classmethod
     def listar(cls):
         cls.abrir()
-        for obj in cls.objetos_pacientes:
-            print(obj)
+        return cls.objetos_pacientes
 
     @classmethod
     def listar_id_paciente(cls, id_paciente):
@@ -98,7 +97,7 @@ class Pacientes_CRUD:
             cls.abrir()
             for obj in cls.objetos_pacientes:
                 if id_paciente == obj.id_paciente:
-                    print(obj)
+                    return obj
         else:
             raise ValueError("preencher este campo")
 
