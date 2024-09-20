@@ -51,7 +51,7 @@ class Paciente:
         return self.idade
 
     def __str__(self):
-        return f"{self.get_id_paciente()} - {self.get_nome()} - {self.get_idade()} - {self.get_cpf()} - {self.get_fone()}"
+        return f"\nid: {self.get_id_paciente()} | nome: {self.get_nome()} | idade: {self.get_idade()} | cpf: {self.get_cpf()} | telefone: {self.get_fone()}"
 
 
 class Pacientes_CRUD:

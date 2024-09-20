@@ -34,7 +34,7 @@ class Medico:
 
     def __str__(self):
         return (
-            f"{self.get_id_medico()} - {self.get_nome()} - {self.get_especificacao()}"
+            f"\nid: {self.get_id_medico()} | nome: {self.get_nome()} | especificação: {self.get_especificacao()}"
         )
 
 

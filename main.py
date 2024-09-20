@@ -9,7 +9,7 @@ class UI:
     @staticmethod
     def menu_main():
         print("1 - Pacientes\n2 - Consultas\n3 - Médicos\n4 - Sair")
-        op = int(input("digite uma opção: "))
+        op = int(input("\ndigite uma opção: "))
         if op > 0 and op <= 4:
             return op
 
@@ -35,9 +35,9 @@ class UI_pacientes:
     @staticmethod
     def menu_pacientes():
         print(
-            "1 - Inserir paciente\n2 - Listar pacientes\n3 - Listar pacientes por id\n4 - Atualizar dados\n5 - Excluir paciente\n6 - Sair"
+            "\n1 - Inserir paciente\n2 - Listar pacientes\n3 - Listar pacientes por id\n4 - Atualizar dados\n5 - Excluir paciente\n6 - Sair"
         )
-        op = int(input("digite um comando: "))
+        op = int(input("\ndigite um comando: "))
         if op > 0 and op <= 6:
             return op
         else:
@@ -99,9 +99,9 @@ class UI_medicos:
     @staticmethod
     def menu_medicos():
         print(
-            "1 - Inserir médico\n2 - Listar médicos\n3 - Listar médicos por id\n4 - Atualizar dados\n5 - Excluir médico\n6 - Sair"
+            "\n1 - Inserir médico\n2 - Listar médicos\n3 - Listar médicos por id\n4 - Atualizar dados\n5 - Excluir médico\n6 - Sair"
         )
-        op = int(input("digite um comando: "))
+        op = int(input("\ndigite um comando: "))
         if op > 0 and op <= 6:
             return op
         else:
@@ -159,9 +159,9 @@ class UI_consultas:
     @staticmethod
     def menu_consultas():
         print(
-            "1 - marcar consulta\n2 - listar minhas consultas\n3 - listar minhas consultas em determinada especificação\n4 - atualizar\n5 - excluir\n6 - sair"
+            "\n1 - marcar consulta\n2 - listar minhas consultas\n3 - listar minhas consultas em determinada especificação\n4 - atualizar\n5 - excluir\n6 - sair"
         )
-        op = int(input("digite uma opção: "))
+        op = int(input("\ndigite uma opção: "))
         if op > 0 and op <= 6:
             return op
 

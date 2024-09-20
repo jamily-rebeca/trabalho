@@ -53,7 +53,7 @@ class Consulta:
         return strHorario
 
     def __str__(self):
-        return f"{self.get_idConsulta()} - {self.get_idPaciente()} - {self.get_idMedico()} - {self.get_especificacao()} - {self.get_horario()}"
+        return f"\nid_consulta: {self.get_idConsulta()} | id_paciente: {self.get_idPaciente()} | id_médico: {self.get_idMedico()} | especificação: {self.get_especificacao()} | horário: {self.get_horario()}"
 
 
 class Consultas_CRUD:
